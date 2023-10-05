@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Bennett",
+        "branch": "IT",
+        "semester": 5,
+        "rollNo": 5021136,
+        "roomNo": 101,
+        "dateOfLeaving": "2023-10-02",
+        "timeOfLeaving": "2023-10-02T14:30:00Z",
+        "purpose": "Library Visit",
+        "timeOfReturn": "2023-10-02T18:00:00Z"
+    },
+    {
+        "name": "Aniket",
+        "branch": "IT",
+        "semester": 5,
+        "rollNo": 5021125,
+        "roomNo": 101,
+        "dateOfLeaving": "2023-10-02",
+        "timeOfLeaving": "2023-10-02T14:30:00Z",
+        "purpose": "Library Visit",
+        "timeOfReturn": "2023-10-02T18:00:00Z"
+    },
+    {
+        "name": "Neil",
+        "branch": "IT",
+        "semester": 5,
+        "rollNo": 5021113,
+        "roomNo": 101,
+        "dateOfLeaving": "2023-10-02",
+        "timeOfLeaving": "2023-10-02T14:30:00Z",
+        "purpose": "Library Visit",
+        "timeOfReturn": "2023-10-02T18:00:00Z"
+    },
+    {
+        "name": "Om Ghadge",
+        "branch": "IT",
+        "semester": 5,
+        "rollNo": 5021125,
+        "roomNo": 101,
+        "dateOfLeaving": "2023-10-02",
+        "timeOfLeaving": "2023-10-02T14:30:00Z",
+        "purpose": "Library Visit",
+        "timeOfReturn": "2023-10-02T18:00:00Z"
+    }
+]
