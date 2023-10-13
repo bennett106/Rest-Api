@@ -1,2 +1,5 @@
+#ignore build directory
 node_modules/
-.env/
+
+#ignore .env file
+.env

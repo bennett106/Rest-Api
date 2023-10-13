@@ -1,0 +1,105 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-05-15",
+    "gender": "Male",
+    "contactNumber": "+1234567890",
+    "email": "john.doe@example.com",
+    "address": {
+      "streetAddress": "123 Main Street",
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "12345"
+    },
+    "studentInfo": {
+      "studentID": "S123456",
+      "department": "Computer Science",
+      "program": "Bachelor's",
+      "enrollmentYear": 2018,
+      "expectedGraduationYear": 2022
+    },
+    "username": "johndoe123",
+    "password": "hashedPasswordHere",
+    "profilePicture": "https://example.com/profile.jpg",
+    "emergencyContact": {
+      "name": "Jane Doe",
+      "relationship": "Parent",
+      "contactNumber": "+9876543210"
+    },
+    "additionalInfo": "Additional information goes here",
+    "roles": [
+      "Student"
+    ],
+    "registrationDate": "2023-10-07T12:00:00Z",
+    "status": "Approved"
+  },
+  {
+    "firstName": "abc",
+    "lastName": "xyz",
+    "dateOfBirth": "1000-01-01",
+    "gender": "Male",
+    "contactNumber": "+1234567890",
+    "email": "abc.xyz@example.com",
+    "address": {
+      "streetAddress": "123 Main Street",
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "12345"
+    },
+    "studentInfo": {
+      "studentID": "S123456",
+      "department": "Computer Science",
+      "program": "Bachelor's",
+      "enrollmentYear": 2018,
+      "expectedGraduationYear": 2022
+    },
+    "username": "abc123",
+    "password": "hashedPasswordHere",
+    "profilePicture": "https://example.com/profile.jpg",
+    "emergencyContact": {
+      "name": "Jane Doe",
+      "relationship": "Parent",
+      "contactNumber": "+9876543210"
+    },
+    "additionalInfo": "Additional information goes here",
+    "roles": [
+      "Student"
+    ],
+    "registrationDate": "2023-10-07T12:00:00Z",
+    "status": "Approved"
+  },
+  {
+    "firstName": "Bennett",
+    "lastName": "Standler",
+    "dateOfBirth": "2003-05-19",
+    "gender": "Male",
+    "contactNumber": "9987214994",
+    "email": "mest.chan@example.com",
+    "address": {
+       "streetAddress": "123 Main St",
+       "city": "Anytown",
+       "state": "CA",
+       "postalCode": "12345"
+    },
+    "studentInfo": {
+       "rollno": 9987214994,
+       "department": "Information Technology",
+       "program": "Bachelor of Science",
+       "enrollmentYear": 2021,
+       "expectedGraduationYear": 2025
+    },
+    "username": "bennett123",
+    "password": "password123",
+    "profilePicture": "",
+    "emergencyContact": {
+       "name": "Jane Doe",
+       "relationship": "Sister",
+       "contactNumber": "0987654321"
+    },
+    "additionalInfo": "",
+    "roles": ["Student"],
+    "registrationDate": "2022-01-01",
+    "status": "Approved"
+  }
+]
