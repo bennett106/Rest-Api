@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
             postalCode,
             rollNo,
             department,
-            program,
+            semester,
             enrollmentYear,
             expectedGraduationYear,
             username,
@@ -47,7 +47,7 @@ const registerUser = async (req, res) => {
           if (!postalCode) missingFields.push("postalCode");
           if (!rollNo) missingFields.push("rollNo");
           if (!department) missingFields.push("department");
-          if (!program) missingFields.push("program");
+          if (!semester) missingFields.push("semester");
           if (!enrollmentYear) missingFields.push("enrollmentYear");
           if (!expectedGraduationYear) missingFields.push("expectedGraduationYear");
           
@@ -90,7 +90,7 @@ const registerUser = async (req, res) => {
             studentInfo: {
               rollNo,
               department,
-              program,
+              semester,
               enrollmentYear,
               expectedGraduationYear,
             },
@@ -101,7 +101,9 @@ const registerUser = async (req, res) => {
 
         //* Step 6: Handle the response based on the result of user creation
         if (user_generation) {
-            // If user creation was successful, respond with a 201 status and user information
+            // If user generation was successful, respond with a 201 status and user information
+            console.log("Successfully created the user!");
+            console.log(user_generation);
             res.status(201).json({ _id: user_generation.id, email: user_generation.emailID, username: user_generation.username, password: user_generation.password });
         } else {
             // If user creation failed, set the HTTP status to 400 and throw an error
@@ -149,10 +151,11 @@ const loginUser = async (req, res) => {
                 message: "SuccessFully Logged in",
                 accessToken : accessToken ,
              });
+             console.log("Successfully Logged in")
         } else {
             // * Step 7: If email or password is incorrect, set HTTP status to 401 (Unauthorized)
             res.status(401);
-            throw new Error("Email or Password is invalid!");
+            throw new Error("Username or Password is invalid!");
         }
     } catch (error) {
         //* Step 8: Handle any errors that occur during login

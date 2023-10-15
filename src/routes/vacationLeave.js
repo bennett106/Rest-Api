@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
-
 const {getVacationLeave, createVacationLeaves} = require("../controllers/vacationLeave")
+const validateToken = require("../middleware/auth");
 
-//routing for get and post for vacation leave
-router.route("/vacationLeave").get(getVacationLeave);
-router.route('/vacationLeave').post(createVacationLeaves);
 
-//routing for get and post for vacationLeave
+//* using the validation for dayleave route
+//* made it private route after using validateToken  only verified users can perform this action
+
+router.get("/vacation-leave", validateToken, getVacationLeave);
+router.post("/vacation-leave", validateToken, createVacationLeaves);
+
 
 module.exports = router;
