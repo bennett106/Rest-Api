@@ -3,62 +3,72 @@
 // const dayLeaveSchema = new mongoose.Schema({
 //   user: {
 //     type: mongoose.Schema.Types.ObjectId,
-//     ref: "User", // Reference the User model
-//     required: true, // Ensure a user is associated with a day leave
-//   },  
-//   dateOfLeaving: {type: Date, required: true},
-//   timeOfLeaving: {type: Date, required: true},
-//   purpose: {type: String, required: true},
-//   timeOfReturn: {type: Date, required: true}
+//     ref: "User",
+//     required: true,
+//   },
+//   dateOfLeaving: { type: Date, required: true },
+//   timeOfLeaving: { type: Date, required: true },
+//   purpose: { type: String, required: true },
+//   timeOfReturn: { type: Date, required: true },
+//   fullName: String,
+//   emailID: String,
+//   rollNo: Number,
+//   contactNumber: String,
 // });
 
+// // Virtual field to populate user details
+// dayLeaveSchema.virtual("userDetails", {
+//   ref: "User",
+//   localField: "user",
+//   foreignField: "_id",
+//   justOne: true,
+// });
 
-// module.exports = mongoose.model("DayLeave_Application", dayLeaveSchema);
+// // Pre-save middleware to populate fields from the User model
+// dayLeaveSchema.pre("save", async function (next) {
+//   try {
+//     // Use the populate method to populate user details
+//     await this.populate("userDetails", [
+//       "fullname",
+//       "emailID",
+//       "studentInfo.rollNo",
+//       "contactNumber"
+//     ]).execPopulate();
+
+//     // After populating, set the fields in your "dayLeave" schema
+//     this.fullName = this.userDetails.fullname;
+//     this.emailID = this.userDetails.emailID;
+//     this.rollNo = this.userDetails.studentInfo.rollNo;
+//     this.contactNumber = this.userDetails.contactNumber;
+
+//     next();
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// // Create the "DayLeave" model
+// const DayLeave = mongoose.model("DayLeave_Application", dayLeaveSchema);
+
+// module.exports = DayLeave;
 
 
 
-
-//* new code
 const mongoose = require("mongoose");
 
+const { ObjectId } = mongoose.Schema;
+
 const dayLeaveSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference the User model
-    required: true, // Ensure a user is associated with a day leave
-  },
-  // Fields to be populated from the User model
-  firstName: String,
-  lastName: String,
-  rollno: Number,
-  department: String,
-  // roomno: String,
-  //Fields to be taken from the front end
   dateOfLeaving: { type: Date, required: true },
   timeOfLeaving: { type: Date, required: true },
   purpose: { type: String, required: true },
   timeOfReturn: { type: Date, required: true },
+  PostedBy: {
+    type: ObjectId,
+    ref: "User",
+  },
 });
 
-// Pre-save middleware to populate fields from the User model
-dayLeaveSchema.pre("save", function (next) {
-  const User = mongoose.model("User");
+const DayLeave = mongoose.model("DayLeave", dayLeaveSchema);
 
-  User.findById(this.user, (err, user) => {
-    if (err) {
-      return next(err);
-    }
-
-    if (user) {
-      this.firstName = user.firstName;
-      this.lastName = user.lastName;
-      this.rollno = user.studentInfo.rollno;
-      this.department = user.studentInfo.department;
-      // this.roomno = user.address.roomno; // Update with the correct path in your User schema
-    }
-
-    next();
-  });
-});
-
-module.exports = mongoose.model("DayLeave_Application", dayLeaveSchema);
+module.exports = DayLeave;

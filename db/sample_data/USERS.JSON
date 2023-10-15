@@ -1,105 +1,68 @@
 [
   {
-    "firstName": "John",
-    "lastName": "Doe",
-    "dateOfBirth": "1990-05-15",
-    "gender": "Male",
-    "contactNumber": "+1234567890",
-    "email": "john.doe@example.com",
-    "address": {
-      "streetAddress": "123 Main Street",
-      "city": "Anytown",
-      "state": "CA",
-      "postalCode": "12345"
-    },
-    "studentInfo": {
-      "studentID": "S123456",
-      "department": "Computer Science",
-      "program": "Bachelor's",
-      "enrollmentYear": 2018,
-      "expectedGraduationYear": 2022
-    },
+    "fullname": "John Doe",
+    "dateOfBirth": "1990-05-15T00:00:00Z",
+    "gender": "male",
+    "contactNumber": "1234567890",
+    "emailID": "johndoe@example.com",
+    "FatherName": "Robert Doe",
+    "MotherName": "Alice Doe",
+    "parentContactNo": 9876543210,
+    "parentEmailID": "robertalice@example.com",
+    "streetAddress": "123 Main Street",
+    "city": "Cityville",
+    "state": "Stateville",
+    "postalCode": 54321,
+    "rollNo": 12345,
+    "department": "IT",
+    "program": "IT",
+    "enrollmentYear": "2022-09-01T00:00:00Z",
+    "expectedGraduationYear": "2026-06-30T00:00:00Z",
     "username": "johndoe123",
-    "password": "hashedPasswordHere",
-    "profilePicture": "https://example.com/profile.jpg",
-    "emergencyContact": {
-      "name": "Jane Doe",
-      "relationship": "Parent",
-      "contactNumber": "+9876543210"
-    },
-    "additionalInfo": "Additional information goes here",
-    "roles": [
-      "Student"
-    ],
-    "registrationDate": "2023-10-07T12:00:00Z",
-    "status": "Approved"
+    "password": "hashed_password"
   },
   {
-    "firstName": "abc",
-    "lastName": "xyz",
-    "dateOfBirth": "1000-01-01",
-    "gender": "Male",
-    "contactNumber": "+1234567890",
-    "email": "abc.xyz@example.com",
-    "address": {
-      "streetAddress": "123 Main Street",
-      "city": "Anytown",
-      "state": "CA",
-      "postalCode": "12345"
-    },
-    "studentInfo": {
-      "studentID": "S123456",
-      "department": "Computer Science",
-      "program": "Bachelor's",
-      "enrollmentYear": 2018,
-      "expectedGraduationYear": 2022
-    },
-    "username": "abc123",
-    "password": "hashedPasswordHere",
-    "profilePicture": "https://example.com/profile.jpg",
-    "emergencyContact": {
-      "name": "Jane Doe",
-      "relationship": "Parent",
-      "contactNumber": "+9876543210"
-    },
-    "additionalInfo": "Additional information goes here",
-    "roles": [
-      "Student"
-    ],
-    "registrationDate": "2023-10-07T12:00:00Z",
-    "status": "Approved"
+    "fullname": "Alice Smith",
+    "dateOfBirth": "1995-08-20T00:00:00Z",
+    "gender": "female",
+    "contactNumber": "9876543210",
+    "emailID": "alicesmith@example.com",
+    "FatherName": "John Smith",
+    "MotherName": "Mary Smith",
+    "parentContactNo": 1234567890,
+    "parentEmailID": "johnmary@example.com",
+    "streetAddress": "456 Elm Street",
+    "city": "Villagetown",
+    "state": "Countyville",
+    "postalCode": 98765,
+    "rollNo": 54321,
+    "department": "COMP-A",
+    "program": "COMP-A",
+    "enrollmentYear": "2021-09-01T00:00:00Z",
+    "expectedGraduationYear": "2025-06-30T00:00:00Z",
+    "username": "alicesmith123",
+    "password": "hashed_password"
   },
   {
-    "firstName": "Bennett",
-    "lastName": "Standler",
-    "dateOfBirth": "2003-05-19",
-    "gender": "Male",
-    "contactNumber": "9987214994",
-    "email": "mest.chan@example.com",
-    "address": {
-       "streetAddress": "123 Main St",
-       "city": "Anytown",
-       "state": "CA",
-       "postalCode": "12345"
-    },
-    "studentInfo": {
-       "rollno": 9987214994,
-       "department": "Information Technology",
-       "program": "Bachelor of Science",
-       "enrollmentYear": 2021,
-       "expectedGraduationYear": 2025
-    },
-    "username": "bennett123",
-    "password": "password123",
-    "profilePicture": "",
-    "emergencyContact": {
-       "name": "Jane Doe",
-       "relationship": "Sister",
-       "contactNumber": "0987654321"
-    },
-    "additionalInfo": "",
-    "roles": ["Student"],
-    "registrationDate": "2022-01-01",
-    "status": "Approved"
+    "fullname": "David Johnson",
+    "dateOfBirth": "1992-03-10T00:00:00Z",
+    "gender": "male",
+    "contactNumber": "8765432109",
+    "emailID": "davidjohnson@example.com",
+    "FatherName": "Michael Johnson",
+    "MotherName": "Sarah Johnson",
+    "parentContactNo": 2345678901,
+    "parentEmailID": "michaelsarah@example.com",
+    "streetAddress": "789 Oak Avenue",
+    "city": "Suburbia",
+    "state": "Countyville",
+    "postalCode": 87654,
+    "rollNo": 67890,
+    "department": "MECH-B",
+    "program": "MECH-B",
+    "enrollmentYear": "2020-09-01T00:00:00Z",
+    "expectedGraduationYear": "2024-06-30T00:00:00Z",
+    "username": "davidjohnson123",
+    "password": "hashed_password"
   }
 ]
