@@ -2,6 +2,8 @@ const DayLeave = require("../models/dayLeave");
 const User = require("../models/user");
 
 //* Retrieve day leave requests
+//* work on this later to get the documents crated by a specific user using the token
+
 const getDayLeave = async (req, res) => {
   try {
     const dayLeave_data = await DayLeave.find(req.query);
@@ -20,13 +22,14 @@ const createDayLeave = async (req, res) => {
     const { _id } = req.user._id; // Assuming user's identity is stored in the "user" property of the request
     console.log("Object ID for the dayleave application :- ",_id);
     // Fetch user details from the User model
-    const user = await User.findById(_id);
+    const user = await User.findById(_id).select('fullname contactNumber emailID studentInfo.rollNo studentInfo.department');
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
+    console.log(user);
 
-    const dayLeaveData = req.body; // Assuming you receive a single JSON object
+    const dayLeaveData = req.body; // You will receive a single json document here
     // console.log(dayLeaveData);
     const {
       dateOfLeaving,
@@ -39,7 +42,19 @@ const createDayLeave = async (req, res) => {
     console.log(dateOfLeaving, timeOfLeaving, purpose, timeOfReturn);
   
     try {
-      const dayLeave = new DayLeave({ dateOfLeaving, timeOfLeaving, purpose, timeOfReturn, PostedBy: req.user._id });
+      // const dayLeave = new DayLeave({ dateOfLeaving, timeOfLeaving, purpose, timeOfReturn, PostedBy: req.user._id });
+      const dayLeave = new DayLeave({
+        dateOfLeaving,
+        timeOfLeaving,
+        purpose,
+        timeOfReturn,
+        PostedBy: _id, // Assign the user's _id
+        fullname: user.fullname, // Add the selected fields
+        contactNumber: user.contactNumber,
+        emailID: user.emailID,
+        rollNo: user.studentInfo.rollNo,
+        department: user.studentInfo.department,
+      });
       await dayLeave.save(); // Wait for the post to be saved before proceeding
       console.log("Success!");
       return res.json(dayLeave);

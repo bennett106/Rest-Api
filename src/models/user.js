@@ -116,11 +116,12 @@ const userSchema = mongoose.Schema({
         department: {
             type: String,
             required: true,
-        },
-        program: {
-            type: String,
-            required: true,
             enum: ['IT', 'COMP-A', 'COMP-B', 'MECH-A', 'MECH-B', 'EXTC', 'ELEC'],
+        },
+        semester: {
+            type: Number,
+            required: true,
+            enum: [1, 2, 3, 4, 5, 6, 7, 8],
         },
         enrollmentYear: {
             type: Date,

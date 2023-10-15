@@ -66,9 +66,17 @@ const dayLeaveSchema = new mongoose.Schema({
   PostedBy: {
     type: ObjectId,
     ref: "User",
+    select: 'fullname contactNumber emailID studentInfo.rollNo studentInfo.department',
   },
+  fullname: String, 
+  contactNumber: String, 
+  emailID: String,
+  rollNo: Number, 
+  department: String, 
+
+
 });
 
-const DayLeave = mongoose.model("DayLeave", dayLeaveSchema);
+const DayLeave = mongoose.model("DayLeave_Application", dayLeaveSchema);
 
 module.exports = DayLeave;
