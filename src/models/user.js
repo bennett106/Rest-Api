@@ -18,7 +18,6 @@ const mongoose = require("mongoose");
 //     timestamps: true,
 // });
 
-//*-------------------------------------------------------TRIAL CODE-----------------------------------------------------------------------------
 
 
 const userSchema = mongoose.Schema({
@@ -58,11 +57,11 @@ const userSchema = mongoose.Schema({
     },
     //* Parent Information
     parentDetails: {
-        FatherName: {
+        fatherName: {
             type:String,
             required: true,
         },
-        MotherName : {
+        motherName : {
             type:String,
             required: true,
         },
@@ -143,11 +142,15 @@ const userSchema = mongoose.Schema({
         required:true,
         minLength: 6,
     },
+    confirmPassword: {
+        type:String ,
+        required:true,
+        minLength: 6,
+    },
 });
 
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
 
 // module.exports = mongoose.model("New_User", new_userSchema);
