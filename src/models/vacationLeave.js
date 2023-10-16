@@ -18,14 +18,14 @@ const vacationLeaveSchema = new mongoose.Schema({
     PostedBy: {
         type: ObjectId,
         ref: "User",
-        select: 'fullname studentInfo.rollNo studentInfo.department contactNumber parentDetails.FatherName  parentDetails.MotherName parentDetails.parentContactNo'
+        select: 'fullname studentInfo.rollNo studentInfo.department contactNumber parentDetails.fatherName  parentDetails.motherName parentDetails.parentContactNo'
     },
     fullname: String,
     rollNo: Number,
     department: String,
     contactNumber: Number,
-    FatherName: String,
-    MotherName: String,
+    fatherName: String,
+    motherName: String,
     parentContactNo: Number,
 
     verified: {

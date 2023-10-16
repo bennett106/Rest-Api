@@ -4,10 +4,10 @@ const validateToken = require("../middleware/auth");
 
 const router = express.Router();
 
-//* route to make get and post request a.k.a create a new user
+//* route to create user and get all the users from database
 router.post("/register",registerUser).get("/register", registerUser);
 
-//* route to search user by id, update user by id, and deleted user by id.
+//* route to search user by id, update user by id, and delete user by id.
 router.get('/register/:id', getUserById).patch('/register/:id', updateUserById).delete('/register/:id', deleteUserById);
 
 //* login endpoint

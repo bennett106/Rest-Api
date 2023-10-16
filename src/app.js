@@ -1,9 +1,9 @@
-require("dotenv").config();
+require("dotenv").config();     //* importing the .env file
 const express = require("express");
 const bodyParser = require('body-parser');
 const connectDB = require("../db/connect");
 const logger = require("morgan");
-const { connection } = require("mongoose");
+const { connection } = require("mongoose");     // not required for now.
 
 const app = express();
 
@@ -12,7 +12,7 @@ const port = process.env.PORT;
 app.use(logger("tiny"));
 
 
-// don't delete it this is the default page
+//* this is the default page
 app.get("/", (req, res) => {
     res.json({
         message: "Hi, I am live"
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 //* setting up middleware
 app.use(bodyParser.json());
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({extended : true}));
 
 
 //* routes :- 
@@ -32,13 +32,13 @@ const users_endpoint = require("./routes/user");        // ? register, login, an
 
 
 //* endpoints :-
-app.use("/api/v1/", users_endpoint);
-app.use("/api/v2/", dayLeave_endpoint);   // creating the endpoint for day leave applications
-app.use("/api/v3/", vacationLeave_endpoint);   // creating the endpoint for vacation leave applications
+app.use("/api/v1/", users_endpoint);     // localhost:5000/api/v1/register    and    localhost:5000/api/v1/login
+app.use("/api/v2/", dayLeave_endpoint);      // localhost:5000/api/v2/day-leave
+app.use("/api/v3/", vacationLeave_endpoint);     // localhost:5000/api/v3/vacation-leave
 
 
 
-//! connecting to database and starting the server! DO NOT MESS WITH THIS.
+//! code for connecting with database and starting the server! DO NOT MESS WITH THIS CODE.
 const start = async () => {
     try {
         app.listen(port, () => {

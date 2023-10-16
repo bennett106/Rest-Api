@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user")
 
 
+//? access -> public
 const registerUser = async (req, res) => {
     try {
         //* Step 1: Destructure username, email, and password from the request body
@@ -12,8 +13,8 @@ const registerUser = async (req, res) => {
             gender,
             contactNumber,
             emailID,
-            FatherName,
-            MotherName,
+            fatherName,
+            motherName,
             parentContactNo,
             parentEmailID,
             streetAddress,
@@ -27,18 +28,25 @@ const registerUser = async (req, res) => {
             expectedGraduationYear,
             username,
             password,
+            confirmPassword,
           } = req.body;
 
+          // Check if password and confirmPassword match
+        if (password !== confirmPassword) {
+          res.status(400);
+          throw new Error("Password and confirmPassword do not match");
+        }
+
           //* Step 2: Check if any of the required fields are missing
-          const missingFields = [];
+          const missingFields = [];     //creating an empty array to push all the fields that are missing.
 
           if (!fullname) missingFields.push("fullname");
           if (!dateOfBirth) missingFields.push("dateOfBirth");
           if (!gender) missingFields.push("gender");
           if (!contactNumber) missingFields.push("contactNumber");
           if (!emailID) missingFields.push("emailID");
-          if (!FatherName) missingFields.push("FatherName");
-          if (!MotherName) missingFields.push("MotherName");
+          if (!fatherName) missingFields.push("fatherName");
+          if (!motherName) missingFields.push("motherName");
           if (!parentContactNo) missingFields.push("parentContactNo");
           if (!parentEmailID) missingFields.push("parentEmailID");
           if (!streetAddress) missingFields.push("streetAddress");
@@ -50,8 +58,17 @@ const registerUser = async (req, res) => {
           if (!semester) missingFields.push("semester");
           if (!enrollmentYear) missingFields.push("enrollmentYear");
           if (!expectedGraduationYear) missingFields.push("expectedGraduationYear");
+          if (!username) missingFields.push("username");
+          if(!password) missingFields.push("password");
+          if(!confirmPassword) missingFields.push("confirmPassword");
           
           if (missingFields.length > 0) {
+
+            if (missingFields.length == 1) {
+              res.status(400); // Set HTTP response status to 400 (Bad Request)
+              throw new Error(`The following field is missing: ${missingFields.join(', ')}`);
+            }
+
             res.status(400); // Set HTTP response status to 400 (Bad Request)
             throw new Error(`The following fields are missing: ${missingFields.join(', ')}`);
           }
@@ -66,7 +83,7 @@ const registerUser = async (req, res) => {
         }
 
         //* Step 4: Hash the provided password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);   //hash only the password field as password and confirmPassword are same
 
         //* Step 5: Create a new user record in the database
         const user_generation = await User.create({
@@ -76,8 +93,8 @@ const registerUser = async (req, res) => {
             contactNumber,
             emailID,
             parentDetails: {
-              FatherName,
-              MotherName,
+              fatherName,
+              motherName,
               parentContactNo,
               parentEmailID,
             },
@@ -96,6 +113,7 @@ const registerUser = async (req, res) => {
             },
             username,
             password: hashedPassword,
+            confirmPassword: hashedPassword,
           });
           
 
@@ -166,6 +184,7 @@ const loginUser = async (req, res) => {
 
 
 //* search user based on the id provided
+//! validation pending
 const getUserById = async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
@@ -181,6 +200,7 @@ const getUserById = async (req, res) => {
 
 
 //* update user based on the id provided
+//! validation pending
 const updateUserById = async (req, res) => {
     try {
       const updatedUserData = req.body;
@@ -204,6 +224,7 @@ const updateUserById = async (req, res) => {
 
 
 //* delete user based ion the id provided
+//! validation pending
 const deleteUserById = async (req, res) => {
     try {
       const user = await User.findByIdAndRemove(req.params.id);

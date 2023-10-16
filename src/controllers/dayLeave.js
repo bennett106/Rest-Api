@@ -2,17 +2,28 @@ const DayLeave = require("../models/dayLeave");
 const User = require("../models/user");
 
 //* Retrieve day leave requests
-//* work on this later to get the documents crated by a specific user using the token
+//* this code will get all the dayleave applications created by the specific user.
 
 const getDayLeave = async (req, res) => {
   try {
-    const dayLeave_data = await DayLeave.find(req.query);
+    // Check if the authenticated user's ID is available in req.user
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    // Retrieve the user's ID from req.user
+    const userId = req.user.id;
+
+    // Use the user's ID to filter day leave applications
+    const dayLeave_data = await DayLeave.find({ PostedBy: userId });
+
     res.status(200).json({ dayLeave_data });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 
 //* create dayleave requests
 
