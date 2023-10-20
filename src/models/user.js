@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
     },
     dateOfBirth: {
         type: Date,
-        required: [true, "Please enter a valid dob"],
+        required: [true, "Please enter a valid date of birth"],
     },
     gender: {
         type:String ,

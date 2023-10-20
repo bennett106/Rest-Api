@@ -25,6 +25,8 @@ const getVacationLeave = async (req, res) => {
   }
 };
 
+
+
 //* create vacation leave applications
 
 const createVacationLeaves = async (req, res) => {
@@ -60,6 +62,7 @@ const createVacationLeaves = async (req, res) => {
         const verified = false; // Example value, you can set it based on your logic
         const approvedBy = null; // Example value, after proper implementation some faculty's name will come here.
 
+        //* main logic for creating entry in the database
         try {
           const vacationLeave = new VacationLeave({
             dateOfLeaving,
@@ -79,6 +82,7 @@ const createVacationLeaves = async (req, res) => {
           await vacationLeave.save(); // Wait for the post to be saved before proceeding
           console.log("***********Success***************");      // if the user is created successfully
           return res.json(vacationLeave);
+
         } catch (error) {
           console.log(error);
           return res
