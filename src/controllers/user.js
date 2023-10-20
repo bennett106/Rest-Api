@@ -6,7 +6,7 @@ const User = require("../models/user")
 //? access -> public
 const registerUser = async (req, res) => {
     try {
-        //* Step 1: Destructure username, email, and password from the request body
+        //* Step 1: Destructure all the fields from the request body
         const {
             fullname,
             dateOfBirth,
