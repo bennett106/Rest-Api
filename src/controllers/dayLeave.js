@@ -1,5 +1,7 @@
 const DayLeave = require("../models/dayLeave");
 const User = require("../models/user");
+// const { format } = require('date-fns');
+
 
 //? Retrieve day leave requests
 //? this code will get all the dayleave applications created by the specific user.
@@ -17,6 +19,22 @@ const getDayLeave = async (req, res) => {
     //* Use the user's ID to filter day leave applications
     const dayLeave_data = await DayLeave.find({ PostedBy: userId });
 
+    // // //* format the data and change the date format to yyyy-mm-dd
+    // const formattedDayLeaveData = dayLeave_data.map((item) => ({
+    //   dateOfLeaving: format(item.dateOfLeaving, 'yyyy-MM-dd'), // Format the date
+    //   timeOfLeaving: item.timeOfLeaving,
+    //   purpose: item.purpose,
+    //   timeOfReturn: item.timeOfReturn,
+    //   PostedBy: item.PostedBy,
+    //   fullname: item.fullname,
+    //   contactNumber: item.contactNumber,
+    //   emailID: item.emailID,
+    //   rollNo: item.rollNo,
+    //   department: item.department,
+    // }));
+    // displaying the formatted data
+    // res.status(200).json({ dayLeave_data: formattedDayLeaveData });
+
     res.status(200).json({ dayLeave_data });
   } catch (error) {
     console.error(error);
@@ -31,7 +49,7 @@ const createDayLeave = async (req, res) => {
   try {
     //* Extract user information from the token
     const { _id } = req.user._id; // Assuming user's identity is stored in the "user" property of the request
-    console.log("Object ID for the dayleave application :- ",_id);
+    // console.log("Object ID for the dayleave application :- ",_id);
 
     //* Fetch user details from the User model
     const user = await User.findById(_id).select('fullname contactNumber emailID studentInfo.rollNo studentInfo.department');
@@ -52,7 +70,7 @@ const createDayLeave = async (req, res) => {
     } = dayLeaveData;
 
     console.log(req.body);
-    console.log(dateOfLeaving, timeOfLeaving, purpose, timeOfReturn);
+    // console.log(dateOfLeaving, timeOfLeaving, purpose, timeOfReturn);
   
     //* the following code is for creating a new entry in the database
     try {
@@ -71,7 +89,7 @@ const createDayLeave = async (req, res) => {
       });
       
       await dayLeave.save();    //*saving the data in database
-      console.log("Success!");
+      console.log("Successfully created a dayleave application.");
       return res.json(dayLeave);
 
     } catch (error) {

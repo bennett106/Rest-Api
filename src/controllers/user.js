@@ -121,7 +121,7 @@ const registerUser = async (req, res) => {
         if (user_generation) {
             // If user generation was successful, respond with a 201 status and user information
             console.log("Successfully created the user!");
-            console.log(user_generation);
+            // console.log(user_generation);
             res.status(201).json({ _id: user_generation.id, email: user_generation.emailID, username: user_generation.username, password: user_generation.password });
         } else {
             // If user creation failed, set the HTTP status to 400 and throw an error
@@ -138,7 +138,7 @@ const registerUser = async (req, res) => {
 // ? access -> public
 const loginUser = async (req, res) => {
     try {
-        //* Step 1: Destructure email and password from the request body
+        //* Step 1: Destructure username and password from the request body
         const { username, password } = req.body;
         if (!username || !password) {
             //* Step 2: Check if email and password are provided
@@ -163,15 +163,16 @@ const loginUser = async (req, res) => {
                 process.env.JWT_SECRET,
                 { expiresIn: '7d' }
             );
+            // console.log(user);
 
             // * Step 6: Respond with a 200 OK status and the access token
             res.status(200).json({ 
                 message: "SuccessFully Logged in",
-                accessToken : accessToken ,
+                accessToken : accessToken ,       // providing the token
              });
-             console.log("Successfully Logged in")
+             console.log("Successfully Logged in");
         } else {
-            // * Step 7: If email or password is incorrect, set HTTP status to 401 (Unauthorized)
+            // * Step 7: If username or password is incorrect, set HTTP status to 401 (Unauthorized)
             res.status(401);
             throw new Error("Username or Password is invalid!");
         }
@@ -239,5 +240,14 @@ const deleteUserById = async (req, res) => {
     }
 };
 
+const currentUser = async (req, res) => {
+  try {
+    const currentUserData = req.user;
+    res.status(200).json(currentUserData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
 
-module.exports = { registerUser, loginUser, getUserById, updateUserById, deleteUserById };
+module.exports = { registerUser, loginUser, getUserById, updateUserById, deleteUserById, currentUser };

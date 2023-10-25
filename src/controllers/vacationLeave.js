@@ -80,7 +80,7 @@ const createVacationLeaves = async (req, res) => {
             approvedBy
           });
           await vacationLeave.save(); // Wait for the post to be saved before proceeding
-          console.log("***********Success***************");      // if the user is created successfully
+          console.log("Successfully created vacation leave application");      // if the user is created successfully
           return res.json(vacationLeave);
 
         } catch (error) {

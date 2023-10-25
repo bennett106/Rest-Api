@@ -1,25 +1,5 @@
 const mongoose = require("mongoose");
 
-// const new_userSchema = mongoose.Schema({
-//     username: {
-//         type: String,
-//         required : [true, "Please add the username"],
-//     },
-//     email: {
-//         type: String,
-//         required: [true, "Please add the email id"],
-//         unique: [true, "email address already taken"],
-//     },
-//     password: {
-//         type: String,
-//         required: [true, "Please add the user Password"],
-//     },
-// },{
-//     timestamps: true,
-// });
-
-
-
 const userSchema = mongoose.Schema({
     //* Personal Details
     fullname: {
@@ -32,8 +12,12 @@ const userSchema = mongoose.Schema({
     },
     gender: {
         type:String ,
-        enum:[ 'female', 'male'],
+        enum:[ 'Female', 'Male', 'Other'],
         required: [true, "Please select your gender"],
+        ifGenderIsOther: {
+            type: String,
+            required: false, // This field is optional
+          }
     },
     contactNumber: {
         type: String,
@@ -65,7 +49,7 @@ const userSchema = mongoose.Schema({
             type:String,
             required: true,
         },
-        parentContactNo:{
+        parentContactNo: {
             type: Number,
             minLength: 10,
             maxlength: 10,
@@ -78,7 +62,7 @@ const userSchema = mongoose.Schema({
             lowercase: true, // Store email in lowercase
             validate: {
             validator: function (value) {
-                // Basic email format validation using regex
+                // Basic email format validation using regular expression
                 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
                 return emailRegex.test(value);
                 },
@@ -123,11 +107,11 @@ const userSchema = mongoose.Schema({
             enum: [1, 2, 3, 4, 5, 6, 7, 8],
         },
         enrollmentYear: {
-            type: Date,
+            type: String,     //store it as a string
             required: true,
         },
         expectedGraduationYear: {
-            type: Date,
+            type: String,       // store it as a string
             required: true,
         },
     },
@@ -147,6 +131,8 @@ const userSchema = mongoose.Schema({
         required:true,
         minLength: 6,
     },
+}, {
+    timestamps: true, // adds createdAt and updatedAt fields automatically
 });
 
 const User = mongoose.model("User", userSchema);

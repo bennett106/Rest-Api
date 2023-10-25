@@ -64,5 +64,28 @@
     "expectedGraduationYear": "2024-06-30T00:00:00Z",
     "username": "davidjohnson123",
     "password": "hashed_password"
+  },
+  {
+    "fullname": "Om Ghadge",
+    "dateOfBirth": "2003-09-16",
+    "gender": "Male",
+    "contactNumber": "1234567890",
+    "emailID": "om@example.com",
+    "fatherName": "abcd",
+    "motherName": "efgh",
+    "parentContactNo": 9876543210,
+    "parentEmailID": "ghadge@gmail.com",
+    "streetAddress": "123 Main Street",
+    "city": "Cityville",
+    "state": "Stateville",
+    "postalCode": 54321,
+    "rollNo": 5021113,
+    "department": "IT",
+    "semester": 5,
+    "enrollmentYear": "2021",
+    "expectedGraduationYear": "2025",
+    "username": "omthe1",
+    "password": "omghadge",
+    "confirmPassword": "omghadge"
   }
 ]

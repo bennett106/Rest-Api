@@ -35,8 +35,10 @@ const vacationLeaveSchema = new mongoose.Schema({
     },
     approvedBy: {
         type: String,
-        required:false
+        required: false
     }
+}, {
+    timestamps: true // adds createdAt and updatedAt fields automatically
 });
 
 module.exports = mongoose.model("VacationLeave_Application", vacationLeaveSchema) // here write the name as "DayLeave_Application", it will reflect as "DayLeave_Applications" in the database.

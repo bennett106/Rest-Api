@@ -1,68 +1,32 @@
-// const mongoose = require("mongoose");
-
-// const dayLeaveSchema = new mongoose.Schema({
-//   user: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "User",
-//     required: true,
-//   },
-//   dateOfLeaving: { type: Date, required: true },
-//   timeOfLeaving: { type: Date, required: true },
-//   purpose: { type: String, required: true },
-//   timeOfReturn: { type: Date, required: true },
-//   fullName: String,
-//   emailID: String,
-//   rollNo: Number,
-//   contactNumber: String,
-// });
-
-// // Virtual field to populate user details
-// dayLeaveSchema.virtual("userDetails", {
-//   ref: "User",
-//   localField: "user",
-//   foreignField: "_id",
-//   justOne: true,
-// });
-
-// // Pre-save middleware to populate fields from the User model
-// dayLeaveSchema.pre("save", async function (next) {
-//   try {
-//     // Use the populate method to populate user details
-//     await this.populate("userDetails", [
-//       "fullname",
-//       "emailID",
-//       "studentInfo.rollNo",
-//       "contactNumber"
-//     ]).execPopulate();
-
-//     // After populating, set the fields in your "dayLeave" schema
-//     this.fullName = this.userDetails.fullname;
-//     this.emailID = this.userDetails.emailID;
-//     this.rollNo = this.userDetails.studentInfo.rollNo;
-//     this.contactNumber = this.userDetails.contactNumber;
-
-//     next();
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-// // Create the "DayLeave" model
-// const DayLeave = mongoose.model("DayLeave_Application", dayLeaveSchema);
-
-// module.exports = DayLeave;
-
-
-
 const mongoose = require("mongoose");
-
 const { ObjectId } = mongoose.Schema;
 
+
 const dayLeaveSchema = new mongoose.Schema({
-  dateOfLeaving: { type: Date, required: true },
-  timeOfLeaving: { type: Date, required: true },
+  dateOfLeaving: {
+    type: Date,
+    required: true,
+  },
+  timeOfLeaving: {
+    // type: String,
+    type: Date,
+    required: true,
+    // get: function(value) {
+    //   return value.toTimeString().split(' ')[0]; // Extract and return the time part
+    // }
+    // validate: {
+    //   validator: function(value) {
+    //     // Use a regular expression to validate the "hh:mm" format
+    //     return /^([01]\d|2[0-3]):([0-5]\d)$/.test(value);
+    //   },
+    //   message: 'Invalid time format (hh:mm)',
+    // },
+  },
   purpose: { type: String, required: true },
-  timeOfReturn: { type: Date, required: true },
+  timeOfReturn: { 
+    type: Date,
+    required: true,
+  },
   PostedBy: {
     type: ObjectId,
     ref: "User",
@@ -73,9 +37,10 @@ const dayLeaveSchema = new mongoose.Schema({
   emailID: String,
   rollNo: Number, 
   department: String, 
-
-
+}, {
+  timestamps: true,   // adds createdAt and updatedAt fields automatically
 });
+
 
 const DayLeave = mongoose.model("DayLeave_Application", dayLeaveSchema);
 

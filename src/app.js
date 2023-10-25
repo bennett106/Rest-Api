@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const connectDB = require("../db/connect");
 const logger = require("morgan");
-const { connection } = require("mongoose");     // not required for now.
+// const { connection } = require("mongoose");     // not required for now.
 
 const app = express();
 
